@@ -59,7 +59,7 @@ if (isset($_POST['send'])) {
                     </div>
                     <div>
                         <label for="phone" class="block mb-2 text-gray-700 font-semibold">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl text-base transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"/>
+                        <input type="tel" id="phone" name="phone" placeholder="+250 787 723 139" class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl text-base transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"/>
                     </div>
                     <div>
                         <label for="category"  class="block mb-2 text-gray-700 font-semibold">Complaint Category</label>
@@ -98,7 +98,7 @@ if (isset($_POST['send'])) {
         <!-- View Complaints Section -->
         <div id="view" class="content-area hidden">
             <div class="bg-white/95 backdrop-blur-2xl rounded-3xl p-10 md:p-16 shadow-2xl border border-white/50 animate-slideUp">
-                <h2 class="mb-8 text-gray-800 text-2xl md:text-3xl font-bold">All Customer Complaints</h2>
+                <h2 class="mb-8 text-gray-800 text-2xl md:text-3xl font-bold">Customer Complaints status</h2>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mb-8">
                     <div class="bg-white p-6 rounded-2xl text-center shadow-md hover:-translate-y-1 hover:shadow-lg transition">
@@ -112,28 +112,23 @@ if (isset($_POST['send'])) {
                         <div class="text-gray-500 mt-1 text-base">Total Complaints</div>
                     </div>
                     <div class="bg-white p-6 rounded-2xl text-center shadow-md hover:-translate-y-1 hover:shadow-lg transition">
-                        <div class="text-3xl font-bold bg-gradient-to-br from-indigo-500 to-purple-600 bg-clip-text text-transparent">8</div>
+                        <div class="text-3xl font-bold bg-gradient-to-br from-indigo-500 to-purple-600 bg-clip-text text-transparent">0</div>
                         <div class="text-gray-500 mt-1 text-base">Pending</div>
                     </div>
                     <div class="bg-white p-6 rounded-2xl text-center shadow-md hover:-translate-y-1 hover:shadow-lg transition">
-                        <div class="text-3xl font-bold bg-gradient-to-br from-indigo-500 to-purple-600 bg-clip-text text-transparent">11</div>
+                        <div class="text-3xl font-bold bg-gradient-to-br from-indigo-500 to-purple-600 bg-clip-text text-transparent">0</div>
                         <div class="text-gray-500 mt-1 text-base">Investigating</div>
                     </div>
                     <div class="bg-white p-6 rounded-2xl text-center shadow-md hover:-translate-y-1 hover:shadow-lg transition">
-                        <div class="text-3xl font-bold bg-gradient-to-br from-indigo-500 to-purple-600 bg-clip-text text-transparent">5</div>
+                        <div class="text-3xl font-bold bg-gradient-to-br from-indigo-500 to-purple-600 bg-clip-text text-transparent">0</div>
                         <div class="text-gray-500 mt-1 text-base">Resolved</div>
                     </div>
                 </div>
 
-                <div class="flex flex-wrap gap-3 mb-8">
-                    <button class="filter-btn px-6 py-2 rounded-full border-2 border-indigo-500 bg-white text-indigo-500 font-semibold transition hover:bg-indigo-500 hover:text-white shadow active" onclick="filterComplaints('all')">All</button>
-                    <button class="filter-btn px-6 py-2 rounded-full border-2 border-indigo-500 bg-white text-indigo-500 font-semibold transition hover:bg-indigo-500 hover:text-white shadow" onclick="filterComplaints('pending')">Pending</button>
-                    <button class="filter-btn px-6 py-2 rounded-full border-2 border-indigo-500 bg-white text-indigo-500 font-semibold transition hover:bg-indigo-500 hover:text-white shadow" onclick="filterComplaints('investigating')">Investigating</button>
-                    <button class="filter-btn px-6 py-2 rounded-full border-2 border-indigo-500 bg-white text-indigo-500 font-semibold transition hover:bg-indigo-500 hover:text-white shadow" onclick="filterComplaints('resolved')">Resolved</button>
-                    <button class="filter-btn px-6 py-2 rounded-full border-2 border-indigo-500 bg-white text-indigo-500 font-semibold transition hover:bg-indigo-500 hover:text-white shadow" onclick="filterComplaints('high')">High Priority</button>
-                </div>
+                <h2 class="mb-8 text-gray-800 text-2xl md:text-3xl text-indigo-500 font-bold">Complaints</h2>
+               
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2  gap-6">
                     <!-- Sample Complaint 1 -->
                     <?php
                     $sel=$conn->query("SELECT * FROM complaints");
@@ -146,10 +141,10 @@ if (isset($_POST['send'])) {
                         <div>
                             <h3 class="text-lg font-bold text-gray-800 mb-2">Defective Product Received</h3>
                             <div class="flex gap-4 mb-3 text-sm text-gray-500">
-                                <span>📦 Product Quality</span>
-                                <span>👤 John Smith</span>
+                                <span>📦 <?php echo $row[5]?></span>
+                                <span>👤 <?php echo $row[1]?></span>
                             </div>
-                            <p class="text-gray-600 mb-3 line-clamp-1">
+                            <p class="text-gray-600 mb-3 text-wrap">
                                <?php echo $row[7]; ?> 
                             </p>
                         </div>
